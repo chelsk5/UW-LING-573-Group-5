@@ -11,7 +11,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 def load_data(data_dir):
     """Loads .txt.data files from the Opinosis dataset into a dictionary"""
-    data = {}  # maps topics to a list of reviews
+    data = {}  # maps topics to their corresponding list of reviews
     search_path = os.path.join(data_dir, "*.txt.data") # data_dir is "topics/"
     files = glob.glob(search_path)
     
@@ -24,8 +24,7 @@ def load_data(data_dir):
             lines = []
             for line in f:
                 if line.strip():
-                    # Remove line numbers and clean the text
-                    cleaned_line = clean_line(line.strip())
+                    cleaned_line = clean_line(line) # clean line
                     lines.append(cleaned_line)
             data[topic] = lines
     
